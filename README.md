@@ -24,75 +24,75 @@
 - Склонировать репозиторий
 - Перейти в папку /infra
 - Создать и заполнить .env файл по примеру:
-```
-SECRET_KEY=<КЛЮЧ>
-DB_NAME=postgres
-POSTGRES_USER=<ИМЯ ПОЛЬЗОВАТЕЛЯ>
-POSTGRES_PASSWORD=<ПАРОЛЬ ПОЛЬЗОВАТЕЛЯ>
-DB_HOST=db
-DB_PORT=5432
-```
+    ```
+    SECRET_KEY=<КЛЮЧ>
+    DB_NAME=postgres
+    POSTGRES_USER=<ИМЯ ПОЛЬЗОВАТЕЛЯ>
+    POSTGRES_PASSWORD=<ПАРОЛЬ ПОЛЬЗОВАТЕЛЯ>
+    DB_HOST=db
+    DB_PORT=5432
+    ```
 - Запустить сборку контейнеров:
-```
-docker-compose up -d --build
-```
-- Для хранения деревьев использовалось расширение PostgreSQL ![Ltree](https://www.postgresql.org/docs/current/ltree.html). Для его загрузки в созданную БД необходимо войти в контейнер с Postgres:
-```
-sudo docker exec -it bashboard_db bash
-```
+    ```
+    docker-compose up -d --build
+    ```
+- Для хранения деревьев использовалось расширение PostgreSQL [Ltree](https://www.postgresql.org/docs/current/ltree.html). Для его загрузки в созданную БД необходимо войти в контейнер с Postgres:
+    ```
+    sudo docker exec -it bashboard_db bash
+    ```
 - Далее нужно под суперпользователем войти в БД postgres через psql и создать расширение ltree:
-```
-su - postgres
-```
-```
-psql postgres
-```
-```
-CREATE EXTENSION IF NOT EXISTS ltree;
-```
+    ```
+    su - postgres
+    ```
+    ```
+    psql postgres
+    ```
+    ```
+    CREATE EXTENSION IF NOT EXISTS ltree;
+    ```
 - Чтобы удостовериться, что расширение ltree включено, можно проверить системный каталог:
-```
-SELECT * FROM pg_catalog.pg_extension;
-```
-   ltree должно быть в списке и находиться в публичном пространстве имен (extnamespace 2200)
+    ```
+    SELECT * FROM pg_catalog.pg_extension;
+    ```
+    ltree должно быть в списке и находиться в публичном пространстве имен (extnamespace 2200)
 - Выйти из папки /infra и перейти в папку /bashboard
 - Необходимо указать Flask какой модуль нужно использовать для запуска. Для этого нужно установить переменной окружения FLASK_APP значение "bashboard":
-```
-set FLASK_APP=bashboard
-```
+    ```
+    set FLASK_APP=bashboard
+    ```
 - Далее нужно создать репозиторий миграций:
-```
-flask db init
-```
+    ```
+    flask db init
+    ```
 - Перед тем как сгенерировать первые миграции для работы ltree необходимо добавить импорт sqlalchemy_utils в шаблон mako:
-```
-# /migrations/script.py.mako
+    ```
+    # /migrations/script.py.mako
 
-import sqlalchemy_utils
-```
+    import sqlalchemy_utils
+    ```
 - Сгенерировать миграции:
-```
-flask db migrate
-```
+    ```
+    flask db migrate
+    ```
 - Применить миграции к базе данных:
-```
-flask db upgrade
-```
+    ```
+    flask db upgrade
+    ```
 - Перед тем как запустить проект необходимо создать корневой тред. Для этого нужно запустить интерпретатор shell:
-```
-flask shell
-```
+    ```
+    flask shell
+    ```
 - В оболочке shell выполнить следующую программу:
-```
-main = Thread('main')
-db.session.add(main)
-db.session.commit()
-```
+    ```
+    main = Thread('main')
+    db.session.add(main)
+    db.session.commit()
+    ```
     Нулевой тред должен инициализироваться с аргументом 'main' и никак иначе.
 - Запустить проект:
-```
-flask run
-```
+    ```
+    flask run
+    ```
 ## Использование
 - Сайт доступен по стандартному адресу http://127.0.0.1:5000
 ### Команды
