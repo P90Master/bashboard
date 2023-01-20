@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %} Чат {% endblock %}
+
+{% block content %}
+  <div class="container-fluid">
+    <div class="messages">
+      {% for msg in messages %}
+          <div class="row g-2">
+              <div class="col-auto">
+                  {{ msg.id }}
+              </div>
+              <div class="col-auto">
+                  >
+              </div>
+              <div class="col-auto">
+                  {{ msg.text }}
+              </div>
+          </div>
+      {% endfor %}
+    </div>
+    <div class="cmd_output">
+    </div>
+    <div class="row g-2">
+      <div class="col-auto">
+        ~/{{ user_location }}
+      </div>
+      <div class="col-auto">
+        $
+      </div>
+      <div class="col-11 input-div">
+        <form method="POST" action="" id="message-form">
+            <textarea class="input-textarea" name="input-textarea" id="input-textarea" autofocus maxlength=1024></textarea>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

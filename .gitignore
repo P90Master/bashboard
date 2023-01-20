@@ -3,6 +3,12 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# Infra
+infra/.env
+
+# Migrations
+bashboard/migrations
+
 # C extensions
 *.so
 

@@ -1,0 +1,32 @@
+@font-face {
+    font-family: 'lucidaconsole';
+    src: url('fonts/lucidaconsole.ttf') format('truetype');
+}
+
+body {
+    font-family:'lucidaconsole';
+    font-size: 0.9rem;
+    font-weight: 500;
+    background-color: #000000;
+    color: #ffffff;
+}
+
+:root {
+    --clr_background: #000000;
+    --clr_text_main: #ffffff;
+    --clr_chatname: #ffcc00;
+    --clr_msgid: #009900;
+}
+
+.input-div {
+    margin-top: 0.3rem;
+}
+
+.input-textarea {
+    background-color: #000000;
+    color: #ffffff;
+    outline: none;
+    resize: none;
+    border: 0;
+    width: 100%;
+}
