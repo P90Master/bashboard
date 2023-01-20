@@ -58,8 +58,10 @@ sio.on('cmd_output', (data) => {
 $('#input-textarea').keypress(function(e){
   if(e.which == 13 && !e.shiftKey){
     var text = $('#input-textarea').val();
-    sio.emit('message', {'text': text, 'path': path});
-    $('#input-textarea').val('');
+    if (text !== '') {
+      sio.emit('message', {'text': text, 'path': path});
+      $('#input-textarea').val('');
+    }
 
     return false;
   }
