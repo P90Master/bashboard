@@ -18,7 +18,7 @@
 - jQuery 3.6.3
 - SocketIO 4.5.4
 ### Инфраструктура
-- Docker 20.10.12 (Docker Compose 2.6.1)
+- Docker 20.10.12 (Docker Compose 1.29.2)
 - Образ PostgreSQL 15.1 для Docker
 ## Запуск проекта
 - Склонировать репозиторий
@@ -27,8 +27,8 @@
     ```
     SECRET_KEY=<КЛЮЧ>
     DB_NAME=postgres
-    POSTGRES_USER=<ИМЯ ПОЛЬЗОВАТЕЛЯ>
-    POSTGRES_PASSWORD=<ПАРОЛЬ ПОЛЬЗОВАТЕЛЯ>
+    POSTGRES_USER=postgres
+    POSTGRES_PASSWORD=88880000
     DB_HOST=db
     DB_PORT=5432
     ```

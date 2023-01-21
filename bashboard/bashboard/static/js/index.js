@@ -35,6 +35,11 @@ sio.on('cmd_output_clear', () => {
   $(".cmd_output").empty();
 });
 
+sio.on('clear', () => {
+  $(".cmd_output").empty();
+  $(".messages").empty();
+});
+
 sio.on('cmd_output', (data) => {
   $(".cmd_output").empty();
   var text = data['text']

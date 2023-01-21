@@ -71,7 +71,7 @@ def join_thread(data):
 
 
 def validate(message):
-    if message and (not isinstance(message, str) or message.strip()):
+    if all((message, (not isinstance(message, str) or message.strip()), len(message) < 1024)):
         return True
 
     return False

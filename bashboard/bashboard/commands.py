@@ -58,6 +58,18 @@ class ClearOutputCommand(Command):
         return f'/{name}: Clear command output'
 
 
+class ClearAllCommand(Command):
+    def execute(self, *args, **kwargs):
+        emit('clear', {})
+
+    def name(self):
+        return 'clear'
+    
+    def help(self):
+        name = self.name()
+        return f'/{name}: Clear board'
+
+
 class ListCommand(Command):
     def execute(self, *args, **kwargs):
         try:
@@ -354,6 +366,7 @@ class HelpCommand(Command):
 
 COMMANDS = {
     'default': ClearOutputCommand(tools),
+    'clear': ClearAllCommand(tools),
     'help': HelpCommand(tools),
     'ls': ListCommand(tools),
     'cd': ChangeDirectoryCommand(tools),
