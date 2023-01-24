@@ -11,12 +11,12 @@
 - Python 3.9.6
 - Flask 2.2.2
 - SQLAlchemy 1.4.44
-- Python-SocketIO 5.7.2
+- Python-Socket.IO 5.7.2
 - Jinja2 3.1.2
 ### Фронтенд
 - Bootstrap 5.2.3
 - jQuery 3.6.3
-- SocketIO 4.5.4
+- Socket.IO 4.5.4
 ### Инфраструктура
 - Docker 20.10.12 (Docker Compose 1.29.2)
 - Образ PostgreSQL 15.1 для Docker
